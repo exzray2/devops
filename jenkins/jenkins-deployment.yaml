@@ -17,7 +17,21 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: jenkins/jenkins
+          image: jenkins/jenkins:lts-jdk11
           imagePullPolicy: Always
       restartPolicy: Always
-      
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+spec:
+  selector:
+    app: jenkins
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
