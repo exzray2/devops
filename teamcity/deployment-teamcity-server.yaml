@@ -20,6 +20,13 @@ spec:
         - name: teamcity-server
           image: jetbrains/teamcity-server
           imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
           ports:
             - containerPort: 8111
       restartPolicy: Always
